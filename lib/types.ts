@@ -54,3 +54,10 @@ export type Unsplash = {
   downloads: number;
   views: number;
 };
+
+export type RandomXKCD = {
+  title: string;
+  alt: string;
+  img: string;
+  transcript: string;
+};
