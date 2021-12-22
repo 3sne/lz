@@ -21,7 +21,7 @@ export default function NotFound() {
           </span>
         </p>
         <p className="text-gray-600 dark:text-gray-400 mb-4">
-          You seem to be lost. You could go back... or enjoy the latest{' '}
+          You seem to be lost. You could go back... or enjoy a random{' '}
           <a
             href="https://xkcd.com/"
             target={'_blank'}
