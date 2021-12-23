@@ -56,4 +56,5 @@ export type RandomXKCD = {
   alt: string;
   img: string;
   transcript: string;
+  num: string;
 };

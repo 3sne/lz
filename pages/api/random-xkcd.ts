@@ -19,7 +19,8 @@ export default async function handler(
       title: randomxkcd.safe_title,
       alt: randomxkcd.alt,
       img: randomxkcd.img,
-      transcript: randomxkcd.transcript
+      transcript: randomxkcd.transcript,
+      num: randomxkcd.num
     });
   } catch (e) {
     return res.status(500).json({ message: e.message });

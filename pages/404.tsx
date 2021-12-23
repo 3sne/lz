@@ -15,7 +15,7 @@ const requestXkcd = async (): Promise<RandomXKCD> => {
 };
 
 export default function NotFound() {
-  const [xkcd, setXkcd] = useState(null);
+  const [xkcd, setXkcd] = useState<RandomXKCD>(null);
   const [imageLoading, setImageLoading] = useState(false);
   const imageRef = createRef<HTMLImageElement>();
 
@@ -55,14 +55,14 @@ export default function NotFound() {
           </span>
         </p>
         <p className="text-gray-600 dark:text-gray-400 mb-4">
-          You seem to be lost. You could go back... or enjoy this random{' '}
+          You seem to be lost. You could go back... or enjoy this{' '}
           <a
-            href="https://xkcd.com/"
+            href={`https://xkcd.com/${xkcd?.num || ''}`}
             target={'_blank'}
             rel="noopener noreferrer"
             className="underline"
           >
-            xkcd
+            random xkcd
           </a>
           .
         </p>
@@ -76,9 +76,14 @@ export default function NotFound() {
               height="auto"
               onLoad={handleImageLoad}
             />
-            <p className="font-semibold text-gray-600 dark:text-gray-200 mt-4">
-              {xkcd?.title}
-            </p>
+            <a
+              href={`https://xkcd.com/${xkcd?.num || ''}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block font-semibold text-gray-600 dark:text-gray-200 mt-4"
+            >
+              {xkcd?.title} <span className="font-light">#{xkcd?.num}</span>
+            </a>
           </div>
           {imageLoading && (
             <div className="w-full self-center">
