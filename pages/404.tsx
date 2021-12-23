@@ -20,6 +20,9 @@ export default function NotFound() {
   const imageRef = createRef<HTMLImageElement>();
 
   const getNewXkcd = async () => {
+    if (imageLoading) {
+      return;
+    }
     setXkcd(null);
     setImageLoading(true);
     const data = await requestXkcd();
@@ -27,8 +30,6 @@ export default function NotFound() {
   };
 
   const handleImageLoad = () => {
-    console.log('called?');
-    console.log(imageLoading);
     if (imageRef.current && imageRef.current.complete) {
       setImageLoading(false);
     }
@@ -55,7 +56,7 @@ export default function NotFound() {
           </span>
         </p>
         <p className="text-gray-600 dark:text-gray-400 mb-4">
-          You seem to be lost. You could go back... or enjoy this{' '}
+          You seem to be lost. You could go back... OR enjoy this{' '}
           <a
             href={`https://xkcd.com/${xkcd?.num || ''}`}
             target={'_blank'}
@@ -66,7 +67,7 @@ export default function NotFound() {
           </a>
           .
         </p>
-        <div className="w-full text-center relative mb-8 mr-auto border-dashed border-2 p-4 border-gray-700 dark:border-gray-200">
+        <div className="w-full text-center relative mb-8 mr-auto border-dashed border-2 p-4 border-gray-500 dark:border-gray-400">
           <div className={`${imageLoading ? 'hidden' : ''}`}>
             <img
               ref={imageRef}
@@ -80,7 +81,7 @@ export default function NotFound() {
               href={`https://xkcd.com/${xkcd?.num || ''}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="block font-semibold text-gray-600 dark:text-gray-200 mt-4"
+              className="block uppercase font-semibold text-gray-600 dark:text-gray-200 mt-4"
             >
               {xkcd?.title} <span className="font-light">#{xkcd?.num}</span>
             </a>
@@ -98,7 +99,11 @@ export default function NotFound() {
         </div>
         <div className="flex flex-col sm:flex-row justify-center items-center gap-6 max-w-2xl border-gray-200 dark:border-gray-700 mx-auto">
           <a
-            className="p-2 sm:p-4 w-48 cursor-pointer font-bold mx-auto bg-teal-300 dark:bg-teal-800 text-center rounded-md text-black dark:text-white"
+            className={`${
+              imageLoading
+                ? 'cursor-not-allowed bg-gray-300 text-black dark:bg-gray-600 dark:text-white'
+                : 'cursor-pointer bg-teal-300 text-black'
+            } p-2 sm:p-4 w-48 font-bold mx-auto text-center rounded-md`}
             onClick={getNewXkcd}
           >
             New XKCD
