@@ -8,7 +8,7 @@ import fetcher from 'lib/fetcher';
 
 export default function NotFound() {
   const { data } = useSWRImmutable<RandomXKCD>(`/api/random-xkcd`, fetcher);
-  
+
   return (
     <Container title="404 – Mukur Panchani">
       <div className="flex flex-col justify-center items-start max-w-2xl border-gray-200 dark:border-gray-700 mx-auto pb-16">
@@ -26,7 +26,7 @@ export default function NotFound() {
             href="https://xkcd.com/"
             target={'_blank'}
             rel="noopener noreferrer"
-            className='underline'
+            className="underline"
           >
             xkcd
           </a>

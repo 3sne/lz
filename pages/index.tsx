@@ -19,7 +19,7 @@ export default function Home({ videos }) {
               <span className="font-semibold">
                 <a
                   href="https://quantiphi.com/"
-                  aria-label='Quantiphi'
+                  aria-label="Quantiphi"
                   target={'_blank'}
                   rel="noopener noreferrer"
                 >

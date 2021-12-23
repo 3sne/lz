@@ -15,14 +15,12 @@ export default async function handler(
     const randomResponse = await fetch(randomxkcdUrl);
     const randomxkcd = await randomResponse.json();
 
-    return res
-      .status(200)
-      .json({
-        title: randomxkcd.safe_title,
-        alt: randomxkcd.alt,
-        img: randomxkcd.img,
-        transcript: randomxkcd.transcript
-      });
+    return res.status(200).json({
+      title: randomxkcd.safe_title,
+      alt: randomxkcd.alt,
+      img: randomxkcd.img,
+      transcript: randomxkcd.transcript
+    });
   } catch (e) {
     return res.status(500).json({ message: e.message });
   }
