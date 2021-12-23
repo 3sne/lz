@@ -10,10 +10,6 @@ export type FormState = {
   message?: string;
 };
 
-export type Subscribers = {
-  count: number;
-};
-
 export type Views = {
   total: number;
 };

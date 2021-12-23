@@ -2,7 +2,6 @@ import Image from 'next/image';
 import { parseISO, format } from 'date-fns';
 
 import Container from 'components/Container';
-import Subscribe from 'components/Subscribe';
 import type { Newsletter } from '.contentlayer/types';
 import type { PropsWithChildren } from 'react';
 
@@ -40,9 +39,6 @@ export default function NewsletterLayout({
           </p>
         </div>
         <div className="w-full prose dark:prose-dark">{children}</div>
-        <div className="mt-8">
-          <Subscribe />
-        </div>
       </article>
     </Container>
   );
