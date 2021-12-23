@@ -13,24 +13,34 @@ export default function Home({ videos }) {
         <div className="flex flex-col-reverse sm:flex-row items-start">
           <div className="flex flex-col pr-8">
             <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-1 text-black dark:text-white">
-              Lee Robinson
+              Mukur Panchani
             </h1>
             <h2 className="text-gray-700 dark:text-gray-200 mb-4">
-              Director of Developer Relations at{' '}
-              <span className="font-semibold">Vercel</span>
+              Platform Engineer at{' '}
+              <span className="font-semibold">
+                <a
+                  href="https://quantiphi.com/"
+                  aria-label='Quantiphi'
+                  target={'_blank'}
+                  rel="noopener noreferrer"
+                >
+                  Quantiphi
+                </a>
+              </span>
+              <span className="font-light ">, and an avid car enthusiast.</span>
             </h2>
             <p className="text-gray-600 dark:text-gray-400 mb-16">
-              Helping developers build a faster web. Teaching about web
-              development, serverless, and React / Next.js.
+              Leveraging expertise in development and cloud technology to
+              deliver great solutions! Love all things tech ❤️
             </p>
           </div>
           <div className="w-[80px] sm:w-[176px] relative mb-8 sm:mb-0 mr-auto">
             <Image
-              alt="Lee Robinson"
-              height={176}
-              width={176}
+              alt="Mukur Panchani"
+              height={200}
+              width={200}
               src="/avatar.jpg"
-              className="rounded-full filter grayscale"
+              className="rounded-full"
             />
           </div>
         </div>

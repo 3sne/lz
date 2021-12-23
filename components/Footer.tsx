@@ -17,7 +17,7 @@ export default function Footer() {
   return (
     <footer className="flex flex-col justify-center items-start max-w-2xl mx-auto w-full mb-8">
       <hr className="w-full border-1 border-gray-200 dark:border-gray-800 mb-8" />
-      <NowPlaying />
+      {/* <NowPlaying /> */}
       <div className="w-full max-w-2xl grid grid-cols-1 gap-4 pb-16 sm:grid-cols-3">
         <div className="flex flex-col space-y-4">
           <Link href="/">
@@ -35,12 +35,15 @@ export default function Footer() {
           </Link>
         </div>
         <div className="flex flex-col space-y-4">
-          <ExternalLink href="https://twitter.com/leeerob">
-            Twitter
+          <h2 className="font-bold text-gray-700 dark:text-gray-200">
+            Find Me!
+          </h2>
+          <ExternalLink href="https://github.com/3sne">GitHub</ExternalLink>
+          <ExternalLink href="https://in.linkedin.com/in/mukur-panchani-295803183">
+            LinkedIn
           </ExternalLink>
-          <ExternalLink href="https://github.com/leerob">GitHub</ExternalLink>
-          <ExternalLink href="https://www.youtube.com/channel/UCZMli3czZnd1uoc1ShTouQw">
-            YouTube
+          <ExternalLink href="https://medium.com/@panchanimukur">
+            Medium
           </ExternalLink>
         </div>
         <div className="flex flex-col space-y-4">
