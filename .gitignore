@@ -7,6 +7,7 @@ public/feed.xml
 .vercel
 .env
 .track
+park
 
 # Contentlayer
 .contentlayer
