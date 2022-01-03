@@ -35,9 +35,6 @@ export default function Footer() {
           </Link>
         </div>
         <div className="flex flex-col space-y-4">
-          <h2 className="font-bold text-gray-700 dark:text-gray-200">
-            Find Me!
-          </h2>
           <ExternalLink href="https://github.com/3sne">GitHub</ExternalLink>
           <ExternalLink href="https://in.linkedin.com/in/mukur-panchani-295803183">
             LinkedIn
