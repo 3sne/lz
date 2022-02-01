@@ -1,141 +1,141 @@
-import Image from 'next/image';
-import Link from 'next/link';
+import Container from 'components/Container';
+import { useState, useEffect, createRef } from 'react';
+import { RandomXKCD } from 'lib/types';
 
-import Container from '../components/Container';
-import BlogPostCard from '../components/BlogPostCard';
-import VideoCard from '../components/VideoCard';
+const requestXkcd = async (): Promise<RandomXKCD> => {
+  const res = await fetch('/api/random-xkcd', {
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    method: 'GET'
+  });
+  return await res.json();
+};
 
-export default function Home({ videos }) {
+export default function Home() {
+  const [xkcd, setXkcd] = useState<RandomXKCD>(null);
+  const [imageLoading, setImageLoading] = useState(false);
+  const imageRef = createRef<HTMLImageElement>();
+
+  const getNewXkcd = async () => {
+    if (imageLoading) {
+      return;
+    }
+    setXkcd(null);
+    setImageLoading(true);
+    const data = await requestXkcd();
+    setXkcd(data);
+  };
+
+  const handleImageLoad = () => {
+    if (imageRef.current && imageRef.current.complete) {
+      setImageLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    setImageLoading(true);
+    const loadXkcd = async () => {
+      const data = await requestXkcd();
+      setXkcd(data);
+    };
+    loadXkcd();
+  }, []); // Fetch first random XKCD
+
   return (
-    <Container>
+    <Container title="Coming Soon...">
       <div className="flex flex-col justify-center items-start max-w-2xl border-gray-200 dark:border-gray-700 mx-auto pb-16">
-        <div className="flex flex-col-reverse sm:flex-row items-start">
-          <div className="flex flex-col pr-8">
-            <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-1 text-black dark:text-white">
-              Mukur Panchani
-            </h1>
-            <h2 className="text-gray-700 dark:text-gray-200 mb-4">
-              Platform Engineer at{' '}
-              <span className="font-semibold">
-                <a
-                  href="https://quantiphi.com/"
-                  aria-label="Quantiphi"
-                  target={'_blank'}
-                  rel="noopener noreferrer"
-                >
-                  Quantiphi
-                </a>
-              </span>
-              <span className="font-light ">, and an avid car enthusiast.</span>
-            </h2>
-            <p className="text-gray-600 dark:text-gray-400 mb-16">
-              Leveraging expertise in development and cloud technology to
-              deliver great solutions! Love all things tech ❤️
-            </p>
-          </div>
-          <div className="w-[80px] sm:w-[176px] relative mb-8 sm:mb-0 mr-auto">
-            <Image
-              alt="Mukur Panchani"
-              height={200}
-              width={200}
-              src="/avatar.jpg"
-              className="rounded-full"
-            />
-          </div>
-        </div>
-        <h3 className="font-bold text-2xl md:text-4xl tracking-tight mb-6 text-black dark:text-white">
-          Featured Posts
-        </h3>
-        <div className="flex gap-6 flex-col md:flex-row">
-          <BlogPostCard
-            title="Everything I Know About Style Guides, Design Systems, and Component Libraries"
-            slug="style-guides-component-libraries-design-systems"
-            gradient="from-[#D8B4FE] to-[#818CF8]"
-          />
-          <BlogPostCard
-            title="Rust Is The Future of JavaScript Infrastructure"
-            slug="rust"
-            gradient="from-[#6EE7B7] via-[#3B82F6] to-[#9333EA]"
-          />
-          <BlogPostCard
-            title="Past, Present, and Future of React State Management"
-            slug="react-state-management"
-            gradient="from-[#FDE68A] via-[#FCA5A5] to-[#FECACA]"
-          />
-        </div>
-        <Link href="/blog">
-          <a className="flex mt-8 text-gray-600 dark:text-gray-400 leading-7 rounded-lg hover:text-gray-800 dark:hover:text-gray-200 transition-all h-6">
-            Read all posts
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              className="h-6 w-6 ml-1"
-            >
-              <path
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M17.5 12h-15m11.667-4l3.333 4-3.333-4zm3.333 4l-3.333 4 3.333-4z"
-              />
-            </svg>
-          </a>
-        </Link>
-        <h3 className="font-bold text-2xl md:text-4xl tracking-tight mb-4 mt-16 text-black dark:text-white">
-          Learn React & Next.js
-        </h3>
+        <h1 className="font-bold text-3xl md:text-5xl tracking-tight mt-2 mb-8 text-black dark:text-white">
+          mukur.dev is under construction 🏗️
+        </h1>
+        {/* <p className="text-gray-700 dark:text-gray-200 mb-4">
+          <span className="font-bold">
+            {'<'}Insert a generic 404 apology here{'>'}
+          </span>
+        </p> */}
         <p className="text-gray-600 dark:text-gray-400 mb-4">
-          Build and deploy a modern SaaS application using the most popular
-          open-source software. This course is 12 hours long and is completely
-          live streamed.
-        </p>
-        <VideoCard
-          index="01"
-          href="https://www.youtube.com/watch?v=MxR5I5_hOKk&list=PL6bwFJ82M6FXgctyoWXqj7H0GK8_YIeF1&index=2"
-          length="1:02:45"
-          title="Introduction to React 2025"
-        />
-        <VideoCard
-          index="02"
-          href="https://www.youtube.com/watch?v=AGl52moyISU&list=PL6bwFJ82M6FXgctyoWXqj7H0GK8_YIeF1&index=3"
-          length="54:22"
-          title="Firestore, Chakra UI, Absolute Imports"
-        />
-        <VideoCard
-          index="03"
-          href="https://www.youtube.com/watch?v=3g6-v3_BNbM&list=PL6bwFJ82M6FXgctyoWXqj7H0GK8_YIeF1&index=4"
-          length="1:08:30"
-          title="Designing & Building the Dashboard"
-        />
-        <VideoCard
-          index="04"
-          href="https://www.youtube.com/watch?v=u8iv_yhSRI8&list=PL6bwFJ82M6FXgctyoWXqj7H0GK8_YIeF1&index=5"
-          length="1:13:45"
-          title="Firebase Admin with Next.js + SWR"
-        />
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://www.youtube.com/playlist?list=PL6bwFJ82M6FXgctyoWXqj7H0GK8_YIeF1"
-          className="flex mt-8 text-gray-600 dark:text-gray-400 leading-7 rounded-lg hover:text-gray-800 dark:hover:text-gray-200 transition-all h-6"
-        >
-          Watch all videos
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            className="h-6 w-6 ml-1"
+          This website is intended to be my little corner on the web. I am
+          working on customizing a static Next.js (and learning along the way)
+          site based on{' '}
+          <a
+            href={`https://leerob.io/`}
+            target={'_blank'}
+            rel="noopener noreferrer"
+            className="underline"
           >
-            <path
-              stroke="currentColor"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M17.5 12h-15m11.667-4l3.333 4-3.333-4zm3.333 4l-3.333 4 3.333-4z"
-            />
-          </svg>
-        </a>
+            Lee Robinson's
+          </a>{' '}
+          portfolio website as the codebase (Thanks Lee!). You can check the
+          current progress on the GitHub{' '}
+          <a
+            href={`https://github.com/3sne/lz`}
+            target={'_blank'}
+            rel="noopener noreferrer"
+            className="underline"
+          >
+            repo
+          </a>
+          .
+        </p>
+        <p className="text-gray-600 dark:text-gray-400 mb-4">
+          Meanwhile, enjoy this{' '}
+          <a
+            href={`https://xkcd.com/${xkcd?.num || ''}`}
+            target={'_blank'}
+            rel="noopener noreferrer"
+            className="underline"
+          >
+            random XKCD
+          </a>{' '}
+          instead :)
+        </p>
+        <p className="text-gray-600 dark:text-gray-400 mb-4">- Mukur</p>
+        <div className="w-full text-center relative mb-4 mr-auto rounded-xl">
+          <div className="bg-gray-50 dark:bg-gray-900 rounded-lg">
+            <div className="p-4">
+              <div className={`${imageLoading ? 'hidden' : ''}`}>
+                <a
+                  href={`https://xkcd.com/${xkcd?.num || ''}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block uppercase font-semibold text-gray-600 dark:text-gray-200 mb-2"
+                >
+                  {xkcd?.title} <span className="font-light">#{xkcd?.num}</span>
+                </a>
+                <div className="p-2 bg-white drop-shadow-md transition-all rounded-lg">
+                  <img
+                    ref={imageRef}
+                    alt={xkcd?.alt}
+                    src={xkcd?.img}
+                    width="100%"
+                    height="auto"
+                    onLoad={handleImageLoad}
+                  />
+                </div>
+              </div>
+              {imageLoading && (
+                <div className="w-full self-center">
+                  <div className="flex animate-pulse flex-row items-center h-full justify-center space-x-5">
+                    <div className="w-full flex flex-col items-center space-y-3">
+                      {/* <div className="w-32 bg-gray-300 h-6 rounded-md "></div> */}
+                      <div className="w-full bg-gray-300 h-60 rounded-md "></div>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+        <div className="flex flex-col sm:flex-row justify-center items-center gap-4 md:gap-6 max-w-2xl border-gray-200 dark:border-gray-700 mx-auto">
+          <a
+            className={`${
+              imageLoading ? 'cursor-not-allowed' : 'cursor-pointer'
+            } p-2 sm:p-4 w-48 font-bold mx-auto text-center rounded-md bg-gray-200 dark:bg-gray-800 text-black dark:text-white`}
+            onClick={getNewXkcd}
+          >
+            New XKCD
+          </a>
+        </div>
       </div>
     </Container>
   );
