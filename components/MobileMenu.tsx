@@ -14,20 +14,16 @@ export default function MobileMenu() {
     }
   );
 
-  interface MenuItem {
+  type MenuItem = {
     title: string;
     url: string;
-  }
+  };
 
   const BaseTransitionDelayMs = 150;
   const menuItems: Array<MenuItem> = [
     {
       title: 'Home',
       url: '/'
-    },
-    {
-      title: 'Guestbook',
-      url: '/guestbook'
     },
     {
       title: 'Dashboard',
