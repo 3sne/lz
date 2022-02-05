@@ -33,7 +33,7 @@ export default function Home({ videos }) {
               deliver great solutions! Love all things tech ❤️
             </p>
           </div>
-          <div className="w-[80px] sm:w-[176px] relative mb-8 sm:mb-0 mr-auto">
+          <div className="w-[128px] sm:w-[256px] relative mb-8 sm:mb-0 mr-auto">
             <Image
               alt="Mukur Panchani"
               height={200}
