@@ -14,6 +14,60 @@ export default function MobileMenu() {
     }
   );
 
+  interface MenuItem {
+    title: string;
+    url: string;
+  }
+
+  const BaseTransitionDelayMs = 150;
+  const menuItems: Array<MenuItem> = [
+    {
+      title: 'Home',
+      url: '/'
+    },
+    {
+      title: 'Guestbook',
+      url: '/guestbook'
+    },
+    {
+      title: 'Dashboard',
+      url: '/dashboard'
+    },
+    {
+      title: 'Blog',
+      url: '/blog'
+    },
+    {
+      title: 'Snippets',
+      url: '/snippets'
+    },
+    {
+      title: 'Tweets',
+      url: '/tweets'
+    },
+    {
+      title: 'Uses',
+      url: '/uses'
+    }
+  ];
+
+  const getMenuListItems = (
+    title: string,
+    url: string,
+    transitionDelayMs: number
+  ) => {
+    return (
+      <li
+        className="border-b border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 text-sm font-semibold"
+        style={{ transitionDelay: `${transitionDelayMs}ms` }}
+      >
+        <Link href={`${url}`}>
+          <a className="flex w-auto pb-4">{title}</a>
+        </Link>
+      </li>
+    );
+  };
+
   function toggleMenu() {
     if (isMenuOpen) {
       setIsMenuOpen(false);
@@ -49,62 +103,14 @@ export default function MobileMenu() {
             isMenuRendered && styles.menuRendered
           )}
         >
-          <li
-            className="border-b border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 text-sm font-semibold"
-            style={{ transitionDelay: '150ms' }}
-          >
-            <Link href="/">
-              <a className="flex w-auto pb-4">Home</a>
-            </Link>
-          </li>
-          <li
-            className="border-b border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 text-sm font-semibold"
-            style={{ transitionDelay: '175ms' }}
-          >
-            <Link href="/guestbook">
-              <a className="flex w-auto pb-4">Guestbook</a>
-            </Link>
-          </li>
-          <li
-            className="border-b border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 text-sm font-semibold"
-            style={{ transitionDelay: '200ms' }}
-          >
-            <Link href="/dashboard">
-              <a className="flex w-auto pb-4">Dashboard</a>
-            </Link>
-          </li>
-          <li
-            className="border-b border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 text-sm font-semibold"
-            style={{ transitionDelay: '250ms' }}
-          >
-            <Link href="/blog">
-              <a className="flex w-auto pb-4">Blog</a>
-            </Link>
-          </li>
-          <li
-            className="border-b border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 text-sm font-semibold"
-            style={{ transitionDelay: '275ms' }}
-          >
-            <Link href="/snippets">
-              <a className="flex w-auto pb-4">Snippets</a>
-            </Link>
-          </li>
-          <li
-            className="border-b border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 text-sm font-semibold"
-            style={{ transitionDelay: '300ms' }}
-          >
-            <Link href="/tweets">
-              <a className="flex w-auto pb-4">Tweets</a>
-            </Link>
-          </li>
-          <li
-            className="border-b border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 text-sm font-semibold"
-            style={{ transitionDelay: '325ms' }}
-          >
-            <Link href="/uses">
-              <a className="flex w-auto pb-4">Uses</a>
-            </Link>
-          </li>
+          {menuItems.map((menuItem, index) => {
+            const { title, url } = menuItem;
+            return getMenuListItems(
+              title,
+              url,
+              BaseTransitionDelayMs + index * 25
+            );
+          })}
         </ul>
       )}
     </>
