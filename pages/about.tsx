@@ -37,14 +37,15 @@ export default function About() {
             >
               GitHub
             </a>{' '}
-            in my free time.
+            .
           </p>
           <p>
             I was born and brought up in the diamond city of Surat, India. I
             moved to Manipal in 2016 to pursue a Bachelor's degree in Computer
-            Science where I met some wonderful friends. I graduated in 2020 and
-            have been working as a Platform Engineer since. I love working out,
-            running and listening to Trap music.{' '}
+            Science where I met some wonderful friends. I graduated in 2020 (a
+            couple months after lockdown; it was a unique experience to say the
+            least) and have been working as a Platform Engineer since. I love
+            working out, running and listening to music.{' '}
           </p>
         </div>
         <Timeline />
