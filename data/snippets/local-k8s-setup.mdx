@@ -25,12 +25,13 @@ sudo systemctl enable containerd.service
 
 ```bash
 sudo apt-get update
-sudo apt-get install -y apt-transport-https ca-certificates curl bash-completion
+sudo apt-get install -y apt-transport-https ca-certificates curl bash-completion vim
 sudo curl -fsSLo /usr/share/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
 echo "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
 sudo apt-get update
 sudo apt-get install -y kubectl
 cat <<BLEH >> ~/.bashrc
+KUBE_EDITOR=vim
 source <(kubectl completion bash)
 alias k=kubectl
 complete -F __start_kubectl k
