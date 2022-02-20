@@ -25,11 +25,16 @@ sudo systemctl enable containerd.service
 
 ```bash
 sudo apt-get update
-sudo apt-get install -y apt-transport-https ca-certificates curl
+sudo apt-get install -y apt-transport-https ca-certificates curl bash-completion
 sudo curl -fsSLo /usr/share/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
 echo "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
 sudo apt-get update
 sudo apt-get install -y kubectl
+cat <<BLEH >> ~/.bashrc
+source <(kubectl completion bash)
+alias k=kubectl
+complete -F __start_kubectl k
+BLEH
 ```
 
 <Step number={3} title="Install minikube" />
