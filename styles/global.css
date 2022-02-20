@@ -63,6 +63,10 @@ html {
   }
 }
 
+.prose {
+  max-width: 69ch;
+}
+
 .prose .anchor {
   @apply absolute invisible;
 
