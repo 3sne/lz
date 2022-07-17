@@ -51,7 +51,7 @@ export default function Xkcd({ updateRandomXkcd }: XkcdPropDef) {
       }
     };
     loadXkcd();
-  }, [updateRandomXkcd]); // Fetch first random XKCD
+  }, []); // Fetch first random XKCD
 
   return (
     <>
