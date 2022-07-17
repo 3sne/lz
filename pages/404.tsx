@@ -1,17 +1,7 @@
-import Link from 'next/link';
-
 import Container from 'components/Container';
-import { useState, useCallback } from 'react';
-import { RandomXKCD } from 'lib/types';
 import Xkcd from 'components/Xkcd';
 
 export default function NotFound() {
-  const [xkcd, setXkcd] = useState<RandomXKCD>(null);
-
-  const handleXkcdUpdate = useCallback((newXkcd: RandomXKCD) => {
-    setXkcd(newXkcd);
-  }, []);
-
   return (
     <Container title="404 – Mukur Panchani">
       <div className="flex flex-col justify-center items-start max-w-2xl border-gray-200 dark:border-gray-700 mx-auto pb-16">
@@ -24,18 +14,18 @@ export default function NotFound() {
           </span>
         </p>
         <p className="text-gray-600 dark:text-gray-400 mb-4">
-          You seem to be lost. You could go back... OR enjoy this{' '}
+          You seem to be lost. You could go back... OR enjoy this random{' '}
           <a
-            href={`https://xkcd.com/${xkcd?.num || ''}`}
+            href={`https://xkcd.com`}
             target={'_blank'}
             rel="noopener noreferrer"
             className="underline"
           >
-            random xkcd
+            xkcd
           </a>
           .
         </p>
-        <Xkcd updateRandomXkcd={handleXkcdUpdate} />
+        <Xkcd />
       </div>
     </Container>
   );

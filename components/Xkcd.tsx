@@ -13,11 +13,7 @@ const requestXkcd = async (): Promise<RandomXKCD> => {
   return await res.json();
 };
 
-interface XkcdPropDef {
-  updateRandomXkcd: Function;
-}
-
-export default function Xkcd({ updateRandomXkcd }: XkcdPropDef) {
+export default function Xkcd() {
   const [xkcd, setXkcd] = useState<RandomXKCD>(null);
   const [imageLoading, setImageLoading] = useState(false);
   const imageRef = createRef<HTMLImageElement>();
@@ -30,9 +26,6 @@ export default function Xkcd({ updateRandomXkcd }: XkcdPropDef) {
     setImageLoading(true);
     const data = await requestXkcd();
     setXkcd(data);
-    if (updateRandomXkcd) {
-      updateRandomXkcd(data);
-    }
   };
 
   const handleImageLoad = () => {
@@ -46,9 +39,6 @@ export default function Xkcd({ updateRandomXkcd }: XkcdPropDef) {
     const loadXkcd = async () => {
       const data = await requestXkcd();
       setXkcd(data);
-      if (updateRandomXkcd) {
-        updateRandomXkcd(data);
-      }
     };
     loadXkcd();
   }, []); // Fetch first random XKCD
