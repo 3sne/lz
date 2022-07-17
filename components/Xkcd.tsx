@@ -14,7 +14,7 @@ const requestXkcd = async (): Promise<RandomXKCD> => {
 };
 
 interface XkcdPropDef {
-  updateRandomXkcd?: Function;
+  updateRandomXkcd: Function;
 }
 
 export default function Xkcd({ updateRandomXkcd }: XkcdPropDef) {
