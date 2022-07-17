@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
 import Container from 'components/Container';
-import { useState, useEffect, createRef } from 'react';
+import { useState, useCallback } from 'react';
 import { RandomXKCD } from 'lib/types';
 import Xkcd from 'components/Xkcd';
 
@@ -18,9 +18,9 @@ const requestXkcd = async (): Promise<RandomXKCD> => {
 export default function NotFound() {
   const [xkcd, setXkcd] = useState<RandomXKCD>(null);
 
-  const handleXkcdUpdate = (newXkcd: RandomXKCD) => {
+  const handleXkcdUpdate = useCallback((newXkcd: RandomXKCD) => {
     setXkcd(newXkcd);
-  };
+  }, []);
 
   return (
     <Container title="404 – Mukur Panchani">
