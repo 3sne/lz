@@ -26,24 +26,20 @@ export default function MobileMenu() {
       url: '/'
     },
     {
-      title: 'Dashboard',
-      url: '/dashboard'
+      title: 'About',
+      url: '/about'
     },
     {
       title: 'Blog',
       url: '/blog'
     },
     {
-      title: 'Snippets',
-      url: '/snippets'
+      title: 'Experience',
+      url: '/experience'
     },
     {
-      title: 'Tweets',
-      url: '/tweets'
-    },
-    {
-      title: 'Uses',
-      url: '/uses'
+      title: 'Connect',
+      url: '/connect'
     }
   ];
 
@@ -56,6 +52,7 @@ export default function MobileMenu() {
       <li
         className="border-b border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 text-sm font-semibold"
         style={{ transitionDelay: `${transitionDelayMs}ms` }}
+        key={title}
       >
         <Link href={`${url}`}>
           <a className="flex w-auto pb-4">{title}</a>
