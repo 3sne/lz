@@ -5,16 +5,6 @@ import { useState, useCallback } from 'react';
 import { RandomXKCD } from 'lib/types';
 import Xkcd from 'components/Xkcd';
 
-const requestXkcd = async (): Promise<RandomXKCD> => {
-  const res = await fetch('/api/random-xkcd', {
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    method: 'GET'
-  });
-  return await res.json();
-};
-
 export default function NotFound() {
   const [xkcd, setXkcd] = useState<RandomXKCD>(null);
 

@@ -5,8 +5,7 @@ import { useState, useCallback } from 'react';
 import { RandomXKCD } from 'lib/types';
 import Xkcd from 'components/Xkcd';
 
-export default function whatever() {
-  
+export default function Whatever() {
   const [xkcd, setXkcd] = useState<RandomXKCD>(null);
 
   const handleXkcdUpdate = useCallback((newXkcd: RandomXKCD) => {
@@ -18,11 +17,9 @@ export default function whatever() {
       <div className="flex flex-col justify-center items-start max-w-2xl border-gray-200 dark:border-gray-700 mx-auto">
         <h1 className="font-bold text-3xl md:text-5xl tracking-tight mt-2 mb-4 text-black dark:text-white">
           xkcd
-          {xkcd && (
-            <span className="font-light"> #{xkcd.num}</span>
-          )}
+          {xkcd && <span className="font-light"> #{xkcd.num}</span>}
         </h1>
-        <Xkcd updateRandomXkcd={handleXkcdUpdate}/>
+        <Xkcd updateRandomXkcd={handleXkcdUpdate} />
       </div>
     </Container>
   );
