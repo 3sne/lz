@@ -1,25 +1,18 @@
 import { useMDXComponent } from 'next-contentlayer/hooks';
-import { getTweets } from 'lib/twitter';
 import components from 'components/MDXComponents';
 import BlogLayout from 'layouts/blog';
-import Tweet from 'components/Tweet';
 import { allBlogs } from '.contentlayer/data';
 import type { Blog } from '.contentlayer/types';
 
-export default function Post({ post, tweets }: { post: Blog; tweets: any[] }) {
+export default function Post({ post }: { post: Blog }) {
   const Component = useMDXComponent(post.body.code);
-  const StaticTweet = ({ id }) => {
-    const tweet = tweets.find((tweet) => tweet.id === id);
-    return <Tweet {...tweet} />;
-  };
 
   return (
     <BlogLayout post={post}>
       <Component
         components={
           {
-            ...components,
-            StaticTweet
+            ...components
           } as any
         }
       />
@@ -36,7 +29,5 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   const post = allBlogs.find((post) => post.slug === params.slug);
-  const tweets = await getTweets(post.tweetIds);
-
-  return { props: { post, tweets } };
+  return { props: { post } };
 }
