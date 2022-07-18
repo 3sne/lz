@@ -7,7 +7,7 @@ export function middleware(req: NextRequest, ev: NextFetchEvent) {
     script-src 'self' 'unsafe-eval' 'unsafe-inline' *.youtube.com *.twitter.com cdn.usefathom.com;
     child-src *.youtube.com *.google.com *.twitter.com;
     style-src 'self' 'unsafe-inline' *.googleapis.com;
-    img-src * blob: data:;
+    img-src * blob: data: imgs.xkcd.com;
     media-src 'none';
     connect-src *;
     font-src 'self';
