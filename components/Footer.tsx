@@ -64,7 +64,7 @@ export default function Footer() {
         </div>
         <div className="flex flex-col space-y-4">
           <h4 className="text-lg font-medium w-full text-gray-800 dark:text-gray-100">
-            React Out!
+            Reach Out!
           </h4>
           <ExternalLink href="https://github.com/3sne">GitHub</ExternalLink>
           <ExternalLink href="https://in.linkedin.com/in/mukur-panchani-295803183">
