@@ -15,7 +15,7 @@ export default function Home({ videos }) {
               Mukur Panchani
             </h1>
             <h2 className="text-gray-700 dark:text-gray-200 mb-4">
-              Platform Engineer at{' '}
+              Cloud Platform Engineer at{' '}
               <span className="font-semibold">
                 <a
                   href="https://quantiphi.com/"

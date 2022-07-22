@@ -33,7 +33,7 @@ export default function Connect() {
             Mukur Panchani
           </h1>
           <h2 className="pb-4 text-gray-700 dark:text-gray-200">
-            Platform Engineer at{' '}
+            Cloud Platform Engineer at{' '}
             <span className="font-semibold">
               <a
                 href="https://quantiphi.com/"
